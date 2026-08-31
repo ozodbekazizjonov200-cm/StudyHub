@@ -143,7 +143,7 @@ export default function Results({
             </div>
 
             <div className="modal-body review-list">
-              {sampleQuizQuestions.map((q, idx) => (
+              {(resultData.questionsList || sampleQuizQuestions).map((q, idx) => (
                 <div key={q.id} className="review-question-card">
                   <div className="rq-header">
                     <span className="rq-number">Savol {idx + 1}</span>
