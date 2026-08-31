@@ -1,0 +1,170 @@
+.progress-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.progress-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.p-highlight-card {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ph-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ph-icon.purple {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.ph-icon.green {
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.ph-icon.orange {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+.ph-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ph-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* Subject Progress Breakdown */
+.subject-progress-breakdown {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.breakdown-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.sp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background-color: #F8FAFC;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.sp-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 200px;
+}
+
+.sp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sp-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.sp-lessons {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.sp-bar-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sp-bar-bg {
+  flex: 1;
+  height: 8px;
+  background-color: #E2E8F0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sp-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s ease;
+}
+
+.sp-percent {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--text-main);
+  min-width: 40px;
+  text-align: right;
+}
+
+.sp-action-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: var(--transition-fast);
+}
+
+.sp-action-btn:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-subtle);
+}
+
+@media (max-width: 768px) {
+  .progress-highlights-grid {
+    grid-template-columns: 1fr;
+  }
+  .sp-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sp-info {
+    width: 100%;
+  }
+  .sp-bar-group {
+    width: 100%;
+  }
+}
