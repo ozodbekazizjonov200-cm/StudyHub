@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { sampleQuizQuestions } from '../data/mockData';
+import { subjectQuizQuestions } from '../data/mockData';
 import { 
   Clock, 
   Flag, 
@@ -7,21 +7,32 @@ import {
   ChevronRight, 
   CheckCircle2, 
   AlertCircle,
-  HelpCircle,
-  Play
+  BookOpen
 } from 'lucide-react';
 import './Tests.css';
 
 export default function Tests({ 
   subjectName = "Matematika", 
   onFinishQuiz, 
-  setActivePage 
+  setActivePage,
+  onSelectSubject
 }) {
+  // Get dynamic questions set for chosen subject
+  const activeQuestions = subjectQuizQuestions[subjectName] || subjectQuizQuestions["Matematika"];
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [flaggedQuestions, setFlaggedQuestions] = useState({});
-  const [timeLeft, setTimeLeft] = useState(900); // 15 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(900); // 15 minutes
   const [showConfirmFinishModal, setShowConfirmFinishModal] = useState(false);
+
+  // Reset state whenever subject changes
+  useEffect(() => {
+    setCurrentQuestionIndex(0);
+    setSelectedAnswers({});
+    setFlaggedQuestions({});
+    setTimeLeft(900);
+  }, [subjectName]);
 
   // Timer countdown effect
   useEffect(() => {
@@ -57,39 +68,57 @@ export default function Tests({
 
   const handleCompleteQuiz = () => {
     let scoreCount = 0;
-    const questions = sampleQuizQuestions;
     
-    questions.forEach((q, idx) => {
+    activeQuestions.forEach((q, idx) => {
       if (selectedAnswers[idx] === q.correctAnswer) {
         scoreCount += 1;
       }
     });
 
-    const percentage = Math.round((scoreCount / questions.length) * 100);
+    const percentage = Math.round((scoreCount / activeQuestions.length) * 100);
     const resultObj = {
       subject: `${subjectName} testi`,
       score: percentage,
-      totalQuestions: questions.length,
+      totalQuestions: activeQuestions.length,
       correctCount: scoreCount,
-      incorrectCount: questions.length - scoreCount,
-      unansweredCount: questions.length - Object.keys(selectedAnswers).length,
+      incorrectCount: activeQuestions.length - scoreCount,
+      unansweredCount: activeQuestions.length - Object.keys(selectedAnswers).length,
       timeSpent: formatTime(900 - timeLeft),
-      date: "Hozirgi sinov"
+      date: "Hozirgi sinov",
+      questionsList: activeQuestions
     };
 
     onFinishQuiz(resultObj);
   };
 
-  const currentQ = sampleQuizQuestions[currentQuestionIndex];
+  const currentQ = activeQuestions[currentQuestionIndex] || activeQuestions[0];
   const answeredCount = Object.keys(selectedAnswers).length;
+  const availableSubjects = Object.keys(subjectQuizQuestions);
 
   return (
     <div className="tests-page animate-fade-in">
-      {/* Test Top Navigation Bar */}
+      {/* Test Top Navigation Bar with Subject Selector */}
       <div className="test-header-bar card-base">
         <div className="test-info-box">
           <span className="badge-tag badge-purple">Onlayn Sinov</span>
-          <h2 className="test-subject-name">{subjectName} testi</h2>
+          
+          {/* Interactive Subject Switcher Dropdown */}
+          <div className="subject-selector-wrapper">
+            <BookOpen size={18} color="#7C3AED" />
+            <select
+              className="test-subject-select"
+              value={subjectName}
+              onChange={(e) => {
+                if (onSelectSubject) {
+                  onSelectSubject(e.target.value);
+                }
+              }}
+            >
+              {availableSubjects.map((s) => (
+                <option key={s} value={s}>{s} testi</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Realtime Timer */}
@@ -112,7 +141,7 @@ export default function Tests({
         <div className="quiz-question-area card-base">
           <div className="question-header">
             <div className="question-number-badge">
-              Savol {currentQuestionIndex + 1} / {sampleQuizQuestions.length}
+              Savol {currentQuestionIndex + 1} / {activeQuestions.length}
             </div>
             <button 
               className={`flag-btn ${flaggedQuestions[currentQuestionIndex] ? 'flagged' : ''}`}
@@ -158,7 +187,7 @@ export default function Tests({
               <ChevronLeft size={18} /> Oldingisi
             </button>
 
-            {currentQuestionIndex < sampleQuizQuestions.length - 1 ? (
+            {currentQuestionIndex < activeQuestions.length - 1 ? (
               <button
                 className="nav-step-btn primary"
                 onClick={() => setCurrentQuestionIndex(prev => prev + 1)}
@@ -179,10 +208,10 @@ export default function Tests({
         {/* Right Question Navigator Panel */}
         <div className="quiz-sidebar-panel card-base">
           <h4 className="panel-title">Savollar xaritasi</h4>
-          <p className="panel-subtitle">Javob berilgan: {answeredCount} / {sampleQuizQuestions.length}</p>
+          <p className="panel-subtitle">Javob berilgan: {answeredCount} / {activeQuestions.length}</p>
 
           <div className="question-numbers-grid">
-            {sampleQuizQuestions.map((_, idx) => {
+            {activeQuestions.map((_, idx) => {
               const isAnswered = selectedAnswers[idx] !== undefined;
               const isCurrent = currentQuestionIndex === idx;
               const isFlagged = flaggedQuestions[idx];
@@ -225,9 +254,9 @@ export default function Tests({
             </div>
 
             <div className="modal-body">
-              <p>Siz {sampleQuizQuestions.length} ta savoldan {answeredCount} tasiga javob berdingiz.</p>
-              {answeredCount < sampleQuizQuestions.length && (
-                <p className="warning-text">⚠️ Hali {sampleQuizQuestions.length - answeredCount} ta savol javobsiz qoldi!</p>
+              <p>Siz {activeQuestions.length} ta savoldan {answeredCount} tasiga javob berdingiz.</p>
+              {answeredCount < activeQuestions.length && (
+                <p className="warning-text">⚠️ Hali {activeQuestions.length - answeredCount} ta savol javobsiz qoldi!</p>
               )}
             </div>
 

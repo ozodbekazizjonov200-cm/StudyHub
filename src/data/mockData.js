@@ -211,68 +211,325 @@ export const recentResultsData = [
   }
 ];
 
-export const sampleQuizQuestions = [
-  {
-    id: 1,
-    question: "Tenglamani yeching: 3x + 15 = 45. x ning qiymati nechaga teng?",
-    options: [
-      "x = 8",
-      "x = 10",
-      "x = 12",
-      "x = 15"
-    ],
-    correctAnswer: 1,
-    explanation: "3x = 45 - 15 => 3x = 30 => x = 10."
-  },
-  {
-    id: 2,
-    question: "Python dasturlash tilida ro'yxatga (list) yangi element qo'shish uchun qaysi metod ishlatiladi?",
-    options: [
-      "list.add()",
-      "list.append()",
-      "list.insert_end()",
-      "list.push()"
-    ],
-    correctAnswer: 1,
-    explanation: "Python'da ro'yxat oxiriga element qo'shish uchun append() metodi qo me'yorda ishlatiladi."
-  },
-  {
-    id: 3,
-    question: "Qaysi gapda Present Perfect zamoni to'g'ri ishlatilgan?",
-    options: [
-      "I have lived in Tashkent since 2020.",
-      "I am live in Tashkent since 2020.",
-      "I lived in Tashkent since 2020 yesterday.",
-      "I was lived in Tashkent since 2020."
-    ],
-    correctAnswer: 0,
-    explanation: "'have lived' + 'since 2020' Present Perfect zamonining klassik namunasidir."
-  },
-  {
-    id: 4,
-    question: "Nyutonning ikkinchi qonuni formulasini ko'rsating:",
-    options: [
-      "F = m / a",
-      "E = mc²",
-      "F = m * a",
-      "P = F * v"
-    ],
-    correctAnswer: 2,
-    explanation: "Kuch (F) massaning (m) tezlanishga (a) ko'paytmasiga teng."
-  },
-  {
-    id: 5,
-    question: "Suvning kimyoviy formulasi qaysi javobda to'g'ri berilgan?",
-    options: [
-      "CO2",
-      "H2O",
-      "NaCl",
-      "O2"
-    ],
-    correctAnswer: 1,
-    explanation: "H2O ikkita vodorod va bitta kislorod atomidan tashkil topgan."
-  }
-];
+export const subjectQuizQuestions = {
+  "Matematika": [
+    {
+      id: 1,
+      question: "Tenglamani yeching: 3x + 15 = 45. x ning qiymati nechaga teng?",
+      options: [
+        "x = 8",
+        "x = 10",
+        "x = 12",
+        "x = 15"
+      ],
+      correctAnswer: 1,
+      explanation: "3x = 45 - 15 => 3x = 30 => x = 10."
+    },
+    {
+      id: 2,
+      question: "Funksiyaning hosilasini toping: f(x) = x³ + 4x² - 5x + 7. f'(x) = ?",
+      options: [
+        "3x² + 8x - 5",
+        "3x² + 4x - 5",
+        "x² + 8x + 7",
+        "3x³ + 8x² - 5"
+      ],
+      correctAnswer: 0,
+      explanation: "(x³)' = 3x², (4x²)' = 8x, (-5x)' = -5. Demak f'(x) = 3x² + 8x - 5."
+    },
+    {
+      id: 3,
+      question: "To'g'ri burchakli uchburchakning katetlari 6 sm va 8 sm. Gipotenuza uzunligini toping.",
+      options: [
+        "9 sm",
+        "12 sm",
+        "10 sm",
+        "14 sm"
+      ],
+      correctAnswer: 2,
+      explanation: "Pifagor teoremasi: c² = 6² + 8² = 36 + 64 = 100 => c = 10 sm."
+    },
+    {
+      id: 4,
+      question: "Trigonometrik tenglik: sin²(α) + cos²(α) nimaga teng?",
+      options: [
+        "1",
+        "0",
+        "tan(α)",
+        "2"
+      ],
+      correctAnswer: 0,
+      explanation: "Asosiy trigonometrik ayniyatga ko'ra sin²(α) + cos²(α) = 1."
+    },
+    {
+      id: 5,
+      question: "Logarifmik ifoda: log₂(32) ning qiymati nechaga teng?",
+      options: [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      correctAnswer: 1,
+      explanation: "2⁵ = 32 bo'lgani uchun log₂(32) = 5."
+    }
+  ],
+
+  "Ingliz tili": [
+    {
+      id: 1,
+      question: "Qaysi gapda Present Perfect zamoni to'g'ri ishlatilgan?",
+      options: [
+        "I have lived in Tashkent since 2020.",
+        "I am live in Tashkent since 2020.",
+        "I lived in Tashkent since 2020 yesterday.",
+        "I was lived in Tashkent since 2020."
+      ],
+      correctAnswer: 0,
+      explanation: "'have lived' + 'since 2020' Present Perfect zamonining klassik namunasidir."
+    },
+    {
+      id: 2,
+      question: "Choose the correct synonym for the word 'ENORMOUS':",
+      options: [
+        "Tiny",
+        "Ordinary",
+        "Huge",
+        "Weak"
+      ],
+      correctAnswer: 2,
+      explanation: "'Enormous' o'zbek tilida 'juda katta', 'ulkan' degani, sinonimi 'Huge'."
+    },
+    {
+      id: 3,
+      question: "Fill in the blank: If I ____ enough money, I would buy a new laptop.",
+      options: [
+        "have",
+        "had",
+        "will have",
+        "would have"
+      ],
+      correctAnswer: 1,
+      explanation: "Second Conditional tuzilishi: If + Past Simple (had), would + Infinitive."
+    },
+    {
+      id: 4,
+      question: "Select the correct passive voice sentence for: 'She wrote a brilliant essay.'",
+      options: [
+        "A brilliant essay was written by her.",
+        "A brilliant essay is written by her.",
+        "A brilliant essay has written by her.",
+        "A brilliant essay had written by her."
+      ],
+      correctAnswer: 0,
+      explanation: "Past Simple Passive: Object + was/were + V3 (was written)."
+    },
+    {
+      id: 5,
+      question: "What is the antonym (opposite meaning) of 'ANCIENT'?",
+      options: [
+        "Old",
+        "Historic",
+        "Traditional",
+        "Modern"
+      ],
+      correctAnswer: 3,
+      explanation: "'Ancient' (qadimiy) so'zining qarama-qarshi ma'nosi 'Modern' (zamonaviy)."
+    }
+  ],
+
+  "Informatika": [
+    {
+      id: 1,
+      question: "Python dasturlash tilida ro'yxatga (list) yangi element qo'shish uchun qaysi metod ishlatiladi?",
+      options: [
+        "list.add()",
+        "list.append()",
+        "list.insert_end()",
+        "list.push()"
+      ],
+      correctAnswer: 1,
+      explanation: "Python'da ro'yxat oxiriga element qo'shish uchun append() me'yorda ishlatiladi."
+    },
+    {
+      id: 2,
+      question: "Python'da o'zgarmas (immutable) ma'lumotlar turini ko'rsating:",
+      options: [
+        "List (ro'yxat)",
+        "Dictionary (lug'at)",
+        "Tuple (kortej)",
+        "Set (to'plam)"
+      ],
+      correctAnswer: 2,
+      explanation: "Tuple (kortej) yaratilgandan so'ng uning elementlarini o'zgartirib bo'lmaydi."
+    },
+    {
+      id: 3,
+      question: "HTML faylida eng katta va asosiy sarlavha tegini ko'rsating:",
+      options: [
+        "<h1>",
+        "<h6>",
+        "<head>",
+        "<header>"
+      ],
+      correctAnswer: 0,
+      explanation: "<h1> tegi eng yuqori darajali va yirik sarlavha hisoblanadi."
+    },
+    {
+      id: 4,
+      question: "Binary Search (Ikkilik qidirish) algoritmining vaqt murakkabligi (Time complexity) nimaga teng?",
+      options: [
+        "O(n²)",
+        "O(log n)",
+        "O(n)",
+        "O(1)"
+      ],
+      correctAnswer: 1,
+      explanation: "Tartiblangan massivda Binary Search har bir qadamda izlash sohasi teng ikkiga bo'lingani uchun O(log n) beradi."
+    },
+    {
+      id: 5,
+      question: "SQL ma'lumotlar bazasida jadvaldagi barcha yozuvlarni olish uchun qaysi buyruq ishlatiladi?",
+      options: [
+        "SELECT * FROM table_name",
+        "FETCH ALL table_name",
+        "GET table_name",
+        "SHOW ALL FROM table_name"
+      ],
+      correctAnswer: 0,
+      explanation: "SELECT * FROM jadval_nomi barcha ustun va satrlarni qaytaradi."
+    }
+  ],
+
+  "Fizika": [
+    {
+      id: 1,
+      question: "Nyutonning ikkinchi qonuni formulasini ko'rsating:",
+      options: [
+        "F = m / a",
+        "E = mc²",
+        "F = m * a",
+        "P = F * v"
+      ],
+      correctAnswer: 2,
+      explanation: "Kuch (F) massaning (m) tezlanishga (a) ko'paytmasiga teng (F = m*a)."
+    },
+    {
+      id: 2,
+      question: "Yorug'likning vakuumdagi tarqalish tezligi taxminan nechaga teng?",
+      options: [
+        "300,000 m/s",
+        "300,000 km/s",
+        "150,000 km/s",
+        "3,000 km/s"
+      ],
+      correctAnswer: 1,
+      explanation: "Vakuumda yorug'lik tezligi c ≈ 300,000 km/s (3×10⁸ m/s)."
+    },
+    {
+      id: 3,
+      question: "Jismning massasi 5 kg va tezlanishi 2 m/s² bo'lsa, unga ta'sir etayotgan kuch teng:",
+      options: [
+        "10 N",
+        "2.5 N",
+        "7 N",
+        "20 N"
+      ],
+      correctAnswer: 0,
+      explanation: "F = m * a = 5 kg * 2 m/s² = 10 Nyuton."
+    },
+    {
+      id: 4,
+      question: "Om qonunining zanjir qismi uchun formulasini tanlang:",
+      options: [
+        "I = U * R",
+        "I = U / R",
+        "R = I / U",
+        "U = I² * R"
+      ],
+      correctAnswer: 1,
+      explanation: "Tok kuchi (I) kuchlanishga (U) to'g'ri, qarshilikka (R) teskari mutanosib (I = U/R)."
+    },
+    {
+      id: 5,
+      question: "Jismning kinetik energiyasi formulasi qaysi javobda to'g'ri berilgan?",
+      options: [
+        "E = m * g * h",
+        "E = m * v",
+        "E = (m * v²) / 2",
+        "E = F * s"
+      ],
+      correctAnswer: 2,
+      explanation: "Kinetik energiya Ek = (m * v²) / 2."
+    }
+  ],
+
+  "Kimyo": [
+    {
+      id: 1,
+      question: "Suvning kimyoviy formulasi qaysi javobda to'g'ri berilgan?",
+      options: [
+        "CO2",
+        "H2O",
+        "NaCl",
+        "O2"
+      ],
+      correctAnswer: 1,
+      explanation: "H2O ikkita vodorod va bitta kislorod atomidan tashkil topgan."
+    },
+    {
+      id: 2,
+      question: "D.I. Mendeleyev davriy sistemasidagi eng birinchi element qaysi?",
+      options: [
+        "Vodorod (H)",
+        "Geliy (He)",
+        "Litiy (Li)",
+        "Kislorod (O)"
+      ],
+      correctAnswer: 0,
+      explanation: "Vodorod (H) tartib raqami 1 bo'lib, eng birinchi va yengil elementdir."
+    },
+    {
+      id: 3,
+      question: "Osh tuzining kimyoviy formulasini ko'rsating:",
+      options: [
+        "KCl",
+        "CaCO3",
+        "NaCl",
+        "NaOH"
+      ],
+      correctAnswer: 2,
+      explanation: "Natriy xlorid (NaCl) kundalik hayotda osh tuzi sifatida ishlatiladi."
+    },
+    {
+      id: 4,
+      question: "Neytral eritmaning (masalan toza suvning) pH ko'rsatkichi nechaga teng?",
+      options: [
+        "0",
+        "7",
+        "14",
+        "5"
+      ],
+      correctAnswer: 1,
+      explanation: "pH = 7 neytral muhitni anglatadi. pH < 7 kislotali, pH > 7 ishqoriy."
+    },
+    {
+      id: 5,
+      question: "Er sharining havo atmosferasi tarkibida eng ko'p ulushni (taxminan 78%) tashkil etuvchi gaz:",
+      options: [
+        "Kislorod (O2)",
+        "Karbonat angidrid (CO2)",
+        "Argon (Ar)",
+        "Azot (N2)"
+      ],
+      correctAnswer: 3,
+      explanation: "Havo hajmining 78% qismini Azot (N2) gazi tashkil qiladi."
+    }
+  ]
+};
+
+// Fallback for default
+export const sampleQuizQuestions = subjectQuizQuestions["Matematika"];
 
 export const remindersData = [
   {

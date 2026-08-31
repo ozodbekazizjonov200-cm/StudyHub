@@ -74,6 +74,7 @@ export default function App() {
               subjectName={selectedSubject}
               onFinishQuiz={handleFinishQuiz}
               setActivePage={setActivePage}
+              onSelectSubject={(subj) => setSelectedSubject(subj)}
             />
           )}
 
